@@ -44,7 +44,7 @@ def depositar_dinheiro():
     deposito = float(input('Digite o valor do depósito: \f'))
     print(f'Seu saldo é R${saldo+deposito} \f')
     saldo = saldo+deposito
-    def saldo_atual():
+def saldo_atual():
     global saldo
     print(f'Seu saldo é de R${saldo} \f')
 def emprestimo():
@@ -61,8 +61,14 @@ def emprestimo():
         print(f'Seu saldo atual é R${saldo}, você terá juros de 20% e poderá pagar em até 60 parcelas de R${(emprestimo*0.2)/60} \f')
     else:
         print(f'Seu saldo atual é R${saldo}, você terá juros de 25% e poderá pagar em até 72 parcelas de R${(emprestimo*0.25)/72} \f')
+def listar_clientes():
+    print('Clientes: \f')
+    for x,y in clientes.items():
+        for i,j in y.items():
+            if i == 'user':
+                print(j)
 while opcao == 1:
-    print('\f 1. Sacar dinheiro \f 2. Depositar dinheiro \f 3. Verificar saldo \f 4. Falar com o gerente \f 5. Empréstimo \f 6. Encerrar atendimento \f')
+    print('\f 1. Sacar dinheiro \f 2. Depositar dinheiro \f 3. Verificar saldo \f 4. Falar com o gerente \f 5. Empréstimo \f 6. Listar clientes \f 7. Encerrar atendimento \f')
     operacao = int(input('Digite a operação que deseja fazer: \f'))
     match operacao:
         case 1:
@@ -76,5 +82,7 @@ while opcao == 1:
         case 5:
             emprestimo()
         case 6:
+            listar_clientes()
+        case 7:
             opcao = 2
 print('Atendimento encerrado! \f')
