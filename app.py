@@ -1,9 +1,9 @@
 saldo = 0
 clientes = {
-    '12345678910' : {'user': 'Beatriz Cruz', 'senha': 1000},
-    '12345678911' : {'user': 'Taylor Swift', 'senha': 1001},
-    '12345678912' : {'user': 'Lana Del Rey', 'senha': 1002},
-    '12345678913' : {'user': 'Ariana Grande', 'senha': 1003},
+    '12345678910' : {'user': 'Beatriz', 'senha': 1000},
+    '12345678911' : {'user': 'Taylor', 'senha': 1001},
+    '12345678912' : {'user': 'Lana', 'senha': 1002},
+    '12345678913' : {'user': 'Ariana', 'senha': 1003},
     '12345678914' : {'user': 'Rihanna', 'senha': 1004}
 }
 inicio = 0
@@ -25,8 +25,11 @@ while inicio==0:
         if cadastro == 'Sim':
             add_cpf = input('Digite o seu CPF: \f')
             add_user = input('Digite o seu nome: \f')
+            nome_lista = add_user.split()
+            user_novo = nome_lista[0].capitalize()
+            print(f'Seu nome de usuário é {user_novo}')
             definir_senha = int(input('Digite uma senha (apenas números de 4 dígitos): \f'))
-            clientes[add_cpf] = {'user':add_user, 'senha':definir_senha}
+            clientes[add_cpf] = {'user':user_novo, 'senha':definir_senha}
             print('Você foi cadastrado com sucesso! \f')
         else:
             inicio = 1
@@ -38,7 +41,7 @@ def sacar_dinheiro():
         print(f'Seu saldo atual é R${saldo-dinheiro_sacar} \f')
         saldo = saldo-dinheiro_sacar
     else:
-        print('Saldo indisponível. \f')
+        print(f'Saldo indisponível. Você não pode sacar R${dinheiro_sacar} pois você só tem R${saldo}\f')
 def depositar_dinheiro():
     global saldo
     deposito = float(input('Digite o valor do depósito: \f'))
