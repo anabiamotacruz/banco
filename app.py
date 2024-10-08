@@ -70,8 +70,20 @@ def listar_clientes():
         for i,j in y.items():
             if i == 'user':
                 print(j)
+def remover_cliente():
+    cliente_remov = (input('Digite o CPF do cliente que desejar remover: \f'))
+    if cliente_remov in clientes:
+        user_a_remover = clientes[cliente_remov]['user']
+        certeza = int(input(f'Tem certeza que deseja remover {user_a_remover} do banco? (Essa ação pode gerar processo) \f 1. Sim \f 2. Não \f'))
+        if certeza == 1:
+            clientes.pop(cliente_remov)
+            print('Cliente removido com sucesso! \f')
+        else:
+            print('Cliente não removido. \f')
+    else:
+        print('CPF não encontrado. \f')
 while opcao == 1:
-    print('\f 1. Sacar dinheiro \f 2. Depositar dinheiro \f 3. Verificar saldo \f 4. Falar com o gerente \f 5. Empréstimo \f 6. Listar clientes \f 7. Encerrar atendimento \f')
+    print('\f 1. Sacar dinheiro \f 2. Depositar dinheiro \f 3. Verificar saldo \f 4. Falar com o gerente \f 5. Empréstimo \f 6. Listar clientes \f 7. Remover cliente \f 8. Encerrar atendimento \f')
     operacao = int(input('Digite a operação que deseja fazer: \f'))
     match operacao:
         case 1:
@@ -87,5 +99,7 @@ while opcao == 1:
         case 6:
             listar_clientes()
         case 7:
+            remover_cliente()
+        case 8:
             opcao = 2
 print('Atendimento encerrado! \f')
